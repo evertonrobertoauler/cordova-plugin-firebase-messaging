@@ -8,7 +8,6 @@ import com.google.firebase.messaging.RemoteMessage;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-
 public class FirebaseMessagingPluginService extends FirebaseMessagingService {
     private static final String TAG = "FirebaseMessagingPlugin";
 
@@ -40,7 +39,7 @@ public class FirebaseMessagingPluginService extends FirebaseMessagingService {
             json.put("google.message_id", remoteMessage.getMessageId());
             json.put("google.sent_time", remoteMessage.getSentTime());
 
-            FirebaseMessagingPlugin.sendNotification(json, false);
+            FirebaseMessagingPlugin.sendNotification(json, this);
         } catch (JSONException e) {
             Log.e(TAG, "onMessageReceived", e);
         }
